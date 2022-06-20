@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    container_name: situacoes_api
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "5000:5000"
