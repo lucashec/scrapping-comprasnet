@@ -1,4 +1,5 @@
 from flask import Flask, request
+from decouple import config
 import os
 import json
 from scrapping import obter_situacoes
@@ -8,8 +9,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.options import Options
 
 app = Flask(__name__)
-
-os.environ['GH_TOKEN'] = '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'
+os.environ['GH_TOKEN'] = config('GITHUB_TOKEN')
 options = Options()
 options.add_argument('--headless')
 driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=options)
